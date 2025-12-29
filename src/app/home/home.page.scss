@@ -38,10 +38,21 @@
   width: 25%;
 }
 
-#ionicInput {
+.ionicInput {
   --border-radius: 8px;
   --border-color: white;
   --background: #525151;
   --color: white;
   --padding-start: 10px;
+}
+
+#recipeImage {
+  border-radius: 5px;
+  border-style: solid;
+  border-width: 2px;
+}
+
+#recipeImagePadding {
+  padding-left: 10px;
+  padding-top: 10px;
 }

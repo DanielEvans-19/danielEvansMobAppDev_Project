@@ -22,20 +22,28 @@ export class HomePage {
   //apiKey=70759a4f7911402abcc53d3c51d3b759
 
   //Query Parameter
-  //?query=<exampleIngredient>&
-  
-  private url: string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=70759a4f7911402abcc53d3c51d3b759";
-  recipesListArr:string[] = [];
+  //query=<exampleIngredient>&
+
+  //URL no parameters
+  //https://api.spoonacular.com/recipes/complexSearch?
+
+  searchQuery: string = "";
+  testVariable: string = "Test1"
+
+  private url: string = "https://api.spoonacular.com/recipes/complexSearch?";
+  private apiKey: string = "apiKey=70759a4f7911402abcc53d3c51d3b759";
+  recipesListArr: string[] = [];
 
   constructor(private http: HttpClient) {
     addIcons({ heart, cog, home, settings })
   }
 
-  get(url:string): Observable<any> {
-    return this.http.get(url);
-  }
-
-  getRecipe(): string[] {
+  //Method which 
+  // 1. sets the search query to the user input
+  // 2. If user search query > 1, add that to the search
+  // 3. Return the JSON array (and print in console currently)
+  getRecipe(userIngredients: any): string[] {
+    this.setSearchQuery(userIngredients);
     this.get(this.url).subscribe(
       {
         next: (results) => {
@@ -51,6 +59,20 @@ export class HomePage {
       }
     )
     return this.recipesListArr;
+  }
+
+  setSearchQuery(userInput: any) {
+    this.searchQuery = userInput;
+    console.log(this.searchQuery);
+  }
+
+  get(url: string): Observable<any> {
+    if (this.searchQuery.length > 1) {
+      return this.http.get(url + "query= " + this.searchQuery + "&" + this.apiKey)
+    }
+    else {
+      return this.http.get(url + this.apiKey);
+    }
   }
 
 }

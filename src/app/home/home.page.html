@@ -58,14 +58,30 @@
 
       <ion-card-content>
         <!-- Replace this with text input field -->
-        <ion-input id="ionicInput" value="potatoes,carrots,beans,etc."></ion-input>
+        <ion-input #ionicInput class="ionicInput" placeholder="potatoes,carrots"></ion-input>
       </ion-card-content>
     </ion-card>
 
     <!-- Put button here -->
-    <ion-button id="buttonSearch">
+    <ion-button (click)="getRecipe(ionicInput.value)" id="buttonSearch">
       Search
     </ion-button>
   </div>
+
+
+  <!--Add in Recipe Cards here -->
+  <ion-card>
+  <div id="recipeImagePadding">
+  <img id="recipeImage" src="https://img.spoonacular.com/recipes/715415-312x231.jpg" />
+  </div>
+  <ion-card-header>
+    <ion-card-title>{{ testVariable }}</ion-card-title>
+    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+  </ion-card-header>
+
+  <ion-card-content>
+    Card description
+  </ion-card-content>
+</ion-card>
 
 </ion-content>
