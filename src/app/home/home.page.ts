@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonFab, IonFabButton, IonIcon, IonGrid, IonCol, IonRow, IonInput, IonItem, IonList, IonCardSubtitle, IonFabList } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { heart } from 'ionicons/icons';
-import { cog } from 'ionicons/icons';
-import { home } from 'ionicons/icons';
+import { heart, settings, cog, home } from 'ionicons/icons';
 
 
 @Component({
@@ -14,6 +12,6 @@ import { home } from 'ionicons/icons';
 })
 export class HomePage {
   constructor() {
-    addIcons({ heart, cog, home})
+    addIcons({ heart, cog, home, settings})
   }
 }

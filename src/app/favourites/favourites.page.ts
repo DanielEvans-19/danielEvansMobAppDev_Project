@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonFab, IonFabButton, IonIcon, IonRow, IonFabList } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { heart } from 'ionicons/icons';
-import { cog } from 'ionicons/icons';
-import { home } from 'ionicons/icons';
+import { heart, settings, cog, home } from 'ionicons/icons';
 
 @Component({
   selector: 'app-favourites',
@@ -17,7 +15,7 @@ import { home } from 'ionicons/icons';
 export class FavouritesPage implements OnInit {
 
   constructor() { 
-    addIcons({heart,home,cog});
+    addIcons({home,heart,cog,settings});
    }
 
   ngOnInit() {
