@@ -36,6 +36,7 @@
 #buttonSearch {
   padding-left: 1%;
   width: 25%;
+  padding-bottom: 1%;
 }
 
 .ionicInput {
@@ -55,4 +56,9 @@
 #recipeImagePadding {
   padding-left: 10px;
   padding-top: 10px;
+}
+
+#recipeCard {
+  width: 40%;
+  background-color: rgb(47, 46, 63);
 }

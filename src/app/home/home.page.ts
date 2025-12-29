@@ -5,12 +5,13 @@ import { heart, settings, cog, home } from 'ionicons/icons';
 
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  imports: [IonFabList, IonInput, IonRow, IonCol, IonGrid, IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonHeader, IonToolbar, IonTitle, IonContent, IonCardSubtitle],
+  imports: [CommonModule, IonList, IonItem, IonFabList, IonInput, IonRow, IonCol, IonGrid, IonIcon, IonFabButton, IonFab, IonButton, IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonHeader, IonToolbar, IonTitle, IonContent, IonCardSubtitle],
 })
 
 export class HomePage {
@@ -28,11 +29,12 @@ export class HomePage {
   //https://api.spoonacular.com/recipes/complexSearch?
 
   searchQuery: string = "";
-  testVariable: string = "Test1"
 
   private url: string = "https://api.spoonacular.com/recipes/complexSearch?";
   private apiKey: string = "apiKey=70759a4f7911402abcc53d3c51d3b759";
-  recipesListArr: string[] = [];
+  recipesListArr: any[] = [];
+
+  recipeTitle: string = ""
 
   constructor(private http: HttpClient) {
     addIcons({ heart, cog, home, settings })
@@ -42,13 +44,14 @@ export class HomePage {
   // 1. sets the search query to the user input
   // 2. If user search query > 1, add that to the search
   // 3. Return the JSON array (and print in console currently)
-  getRecipe(userIngredients: any): string[] {
+  getRecipe(userIngredients: any) {
     this.setSearchQuery(userIngredients);
     this.get(this.url).subscribe(
       {
         next: (results) => {
           console.log(results);
           this.recipesListArr = results.results;
+          this.recipeTitle = results.results.title;
         },
         error: (e) => console.error(e),
         complete: () => {
@@ -66,6 +69,7 @@ export class HomePage {
     console.log(this.searchQuery);
   }
 
+  //If user query isn't empty, it'll include the user's search. If not, then display a generic recipe list
   get(url: string): Observable<any> {
     if (this.searchQuery.length > 1) {
       return this.http.get(url + "query= " + this.searchQuery + "&" + this.apiKey)

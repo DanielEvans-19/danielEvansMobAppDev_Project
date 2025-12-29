@@ -70,18 +70,33 @@
 
 
   <!--Add in Recipe Cards here -->
-  <ion-card>
-  <div id="recipeImagePadding">
-  <img id="recipeImage" src="https://img.spoonacular.com/recipes/715415-312x231.jpg" />
-  </div>
-  <ion-card-header>
-    <ion-card-title>{{ testVariable }}</ion-card-title>
-    <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
-  </ion-card-header>
-
-  <ion-card-content>
-    Card description
-  </ion-card-content>
-</ion-card>
+  <ion-list id="recipeList">
+    <ion-item *ngFor="let r of recipesListArr">
+      <ion-card id="recipeCard">
+        <div id="recipeImagePadding">
+          <img id="recipeImage" src={{r.image}} />
+        </div>
+        <ion-card-header>
+          <ion-card-title>{{ r.title }}</ion-card-title>
+        </ion-card-header>
+  
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-button>Details</ion-button>
+              </ion-col>
+              <ion-col>
+                <ion-button>
+                  <ion-icon name="heart"></ion-icon>
+                </ion-button>
+              </ion-col>
+              <ion-col offset="5"></ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
 
 </ion-content>
