@@ -8,6 +8,15 @@
   transform: translateY(-50%);
 }
 
+#container_Left {
+  text-align: left;
+
+  position: absolute;
+  left: 2%;
+  top: 2%;
+  width: 40%;
+}
+
 #container strong {
   font-size: 20px;
   line-height: 26px;
