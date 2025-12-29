@@ -29,6 +29,7 @@ export class HomePage {
   //https://api.spoonacular.com/recipes/complexSearch?
 
   searchQuery: string = "";
+  recipeId: string = ""; 
 
   private url: string = "https://api.spoonacular.com/recipes/complexSearch?";
   private apiKey: string = "apiKey=70759a4f7911402abcc53d3c51d3b759";

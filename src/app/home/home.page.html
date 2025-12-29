@@ -58,7 +58,7 @@
 
       <ion-card-content>
         <!-- Replace this with text input field -->
-        <ion-input #ionicInput class="ionicInput" placeholder="potatoes,carrots"></ion-input>
+        <ion-input #ionicInput class="ionicInput" placeholder="e.g: potatoes,carrots"></ion-input>
       </ion-card-content>
     </ion-card>
 
@@ -84,7 +84,7 @@
           <ion-grid>
             <ion-row>
               <ion-col>
-                <ion-button>Details</ion-button>
+                <ion-button href="/recipe-details?{{r.id}}">Details</ion-button>
               </ion-col>
               <ion-col>
                 <ion-button>

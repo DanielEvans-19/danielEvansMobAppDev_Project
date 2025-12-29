@@ -8,7 +8,7 @@
 
 <ion-content>
 
-<!-- Floating Navigation Buttons -->
+  <!-- Floating Navigation Buttons -->
   <ion-grid>
     <ion-row>
       <ion-col offset="10">
@@ -22,7 +22,7 @@
       <ion-col>
         <ion-fab>
           <ion-fab-button href="/favourites">
-            <ion-icon name="heart"></ion-icon>          
+            <ion-icon name="heart"></ion-icon>
           </ion-fab-button>
         </ion-fab>
       </ion-col>
@@ -40,13 +40,70 @@
               <strong>IRL</strong>
             </ion-fab-button>
             <ion-fab-button>
-              <strong>US</strong> 
-            </ion-fab-button>           
+              <strong>US</strong>
+            </ion-fab-button>
           </ion-fab-list>
         </ion-fab>
       </ion-col>
     </ion-row>
   </ion-grid>
 
+  <!-- Recipe Card -->
+  <ion-item>
+    <ion-card id="recipeCard">
+      <div id="recipeImagePadding">
+        <img id="recipeImage" src={{recipeImageSrc}} />
+      </div>
+      <ion-card-header>
+        <ion-card-title>{{recipeTitle}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <strong>Ingredients:</strong>
+        
+        <br><br>
+        
+        <ion-list>
+          <ion-item *ngFor="let i of recipeIngredients">
+            <!--Come back to add metric option -->
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <img src="https://img.spoonacular.com/ingredients_100x100/{{i.image}}" />
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  {{i.originalName}} : {{i.measures.us.amount}} {{i.measures.us.unitLong}}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+
+        <br><br>
+
+        <ion-card-title>Steps:</ion-card-title>
+        <ion-list>
+          <ion-item *ngFor="let s of recipeSteps">
+            <!--Come back to add metric option -->
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  {{s.number}}.
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  {{s.step}}
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </ion-list>
+
+      </ion-card-content>
+    </ion-card>
+  </ion-item>
 
 </ion-content>
