@@ -1,20 +1,28 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      G00473365
+      G00473365 | Home
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <!--Fab button content-->
+ <!-- Floating Navigation Buttons -->
   <ion-grid>
     <ion-row>
-      <ion-col offset="11">
+      <ion-col offset="10">
         <ion-fab>
-          <ion-fab-button>
-            <ion-icon name="heart"></ion-icon>
+          <ion-fab-button href="/home">
+            <ion-icon name="home"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-col>
+
+      <ion-col>
+        <ion-fab>
+          <ion-fab-button href="/favourites">
+            <ion-icon name="heart"></ion-icon>          
           </ion-fab-button>
         </ion-fab>
       </ion-col>
@@ -24,11 +32,20 @@
           <ion-fab-button>
             <ion-icon name="cog"></ion-icon>
           </ion-fab-button>
+          <ion-fab-list side="bottom">
+            <ion-fab-button>
+              <strong>IRL</strong>
+            </ion-fab-button>
+            <ion-fab-button>
+              <strong>US</strong> 
+            </ion-fab-button>           
+          </ion-fab-list>
         </ion-fab>
       </ion-col>
     </ion-row>
   </ion-grid>
 
+  <!-- Card component for search -->
   <div>
     <ion-card id="container_Left">
       <ion-card-header>
