@@ -8,15 +8,6 @@
   transform: translateY(-50%);
 }
 
-#container_Left {
-  text-align: left;
-
-  position: absolute;
-  left: 2%;
-  top: 2%;
-  width: 40%;
-}
-
 #container strong {
   font-size: 20px;
   line-height: 26px;
@@ -33,4 +24,24 @@
 
 #container a {
   text-decoration: none;
+}
+
+//Non-Default Styles
+
+#container_Left {
+  text-align: left;
+  width: 40%;
+}
+
+#buttonSearch {
+  padding-left: 1%;
+  width: 25%;
+}
+
+#ionicInput {
+  --border-radius: 8px;
+  --border-color: white;
+  --background: #525151;
+  --color: white;
+  --padding-start: 10px;
 }

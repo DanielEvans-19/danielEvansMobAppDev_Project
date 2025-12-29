@@ -7,19 +7,45 @@
 </ion-header>
 
 <ion-content>
-  <div id="container_Left">
-    <ion-card>
-  <ion-card-header>
-    <ion-card-title>Enter Ingredients</ion-card-title>
-  </ion-card-header>
 
-  <ion-card-content>
-    <!-- Replace this with text input field -->
-    Here's a small text description for the card content. Nothing more, nothing less.
-  </ion-card-content>
-</ion-card>
+  <!--Fab button content-->
+  <ion-grid>
+    <ion-row>
+      <ion-col offset="11">
+        <ion-fab>
+          <ion-fab-button>
+            <ion-icon name="heart"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-col>
 
-<!-- Put button here -->
+      <ion-col>
+        <ion-fab>
+          <ion-fab-button>
+            <ion-icon name="cog"></ion-icon>
+          </ion-fab-button>
+        </ion-fab>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
+  <div>
+    <ion-card id="container_Left">
+      <ion-card-header>
+        <ion-card-title>Enter Ingredients</ion-card-title>
+        <ion-card-subtitle>Multiple values entered below should be separated by a comma</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <!-- Replace this with text input field -->
+        <ion-input id="ionicInput" value="potatoes,carrots,beans,etc."></ion-input>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Put button here -->
+    <ion-button id="buttonSearch">
+      Search
+    </ion-button>
   </div>
+
 </ion-content>
