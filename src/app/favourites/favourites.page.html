@@ -49,13 +49,13 @@
   </ion-grid>
 
 
-<ion-item>
+<ion-item *ngFor="let t of titlesList; let idx = index">
     <ion-card id="recipeCard">
       <div id="recipeImagePadding">
-        <img id="recipeImage" />
+        <img id="recipeImage" [src]="imageSrcList[idx]"/>
       </div>
       <ion-card-header>
-        <ion-card-title>Title</ion-card-title>
+        <ion-card-title>{{t}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
