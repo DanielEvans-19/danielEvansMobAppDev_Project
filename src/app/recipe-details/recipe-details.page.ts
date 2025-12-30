@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonCardTitle, IonCardHeader, IonCard, IonItem, IonList, IonFabList, IonIcon, IonFabButton, IonFab, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonCardContent, IonButton, IonCardTitle, IonCardHeader, IonCard, IonItem, IonList, IonFabList, IonIcon, IonFabButton, IonFab, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class RecipeDetailsPage implements OnInit {
 
