@@ -7,6 +7,7 @@ import { heart, settings, cog, home } from 'ionicons/icons';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { FavouritesService } from '../services/favourites.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -30,8 +31,15 @@ export class RecipeDetailsPage implements OnInit {
   recipeIngredients: any[] = [];
   recipeSteps: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {
+
+
+  constructor(private http: HttpClient, private router: Router, private favourites: FavouritesService) {
     addIcons({ home, heart, cog, settings });
+  }
+
+  addToFavourites() {
+    this.favourites.add(this.recipeId);
+    console.log(this.recipeId);
   }
 
   setId() {

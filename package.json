@@ -27,6 +27,7 @@
     "@capacitor/keyboard": "8.0.0",
     "@capacitor/status-bar": "8.0.0",
     "@ionic/angular": "^8.0.0",
+    "@ionic/storage-angular": "^4.0.0",
     "git": "^0.1.5",
     "ionicons": "^7.0.0",
     "node": "^22.12.0",
