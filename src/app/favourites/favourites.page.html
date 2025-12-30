@@ -59,9 +59,13 @@
       </ion-card-header>
 
       <ion-card-content>
-
+        <ion-button [href]="'/recipe-details?' + idList[idx]">Details</ion-button>
+        <ion-button (click) ="removeFavourite(idList[idx])">
+          Remove from Favourites | 
+            <ion-icon name="heart"></ion-icon>
+        </ion-button>
       </ion-card-content>
-    </ion-card>
-  </ion-item>
+      </ion-card>
+      </ion-item>
 
 </ion-content>

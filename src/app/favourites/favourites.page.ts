@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonFab, IonFabButton, IonIcon, IonRow, IonFabList, IonButton, IonCardTitle, IonList, IonItem, IonCardContent, IonCardHeader, IonCard } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonFab, IonFabButton, IonIcon, IonRow, IonFabList, IonButton, IonCardTitle, IonItem, IonCardContent, IonCardHeader, IonCard } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart, settings, cog, home } from 'ionicons/icons';
 import { FavouritesService } from '../services/favourites.service';
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
   templateUrl: './favourites.page.html',
   styleUrls: ['./favourites.page.scss'],
   standalone: true,
-  imports: [IonCard, IonCardHeader, IonCardContent, IonItem, IonList, IonCardTitle, IonButton, IonFabList, IonRow, IonIcon, IonFabButton, IonFab, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonCard, IonCardHeader, IonCardContent, IonItem, IonCardTitle, IonButton, IonFabList, IonRow, IonIcon, IonFabButton, IonFab, IonCol, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class FavouritesPage implements OnInit {
 
@@ -26,20 +26,35 @@ export class FavouritesPage implements OnInit {
   imageSrcList: string[] = [];
   favImageSource: string = "";
 
+  favId: string = "";
+  idList: string[] = [];
+
   constructor(private favourites: FavouritesService, private http: HttpClient) { 
     addIcons({home,heart,cog,settings});
    }
 
+  async removeFavourite(Id: string) {
+    console.log(Id);
+  await this.favourites.remove(Id);
+
+  const index = this.idList.indexOf(Id);
+  if (index > -1) {
+    this.idList.splice(index, 1);
+    this.titlesList.splice(index, 1);
+    this.imageSrcList.splice(index, 1);
+  }
+  console.log('Updated arrays:', this.idList, this.titlesList, this.imageSrcList);
+}
+
   async ngOnInit() {
     this.favouritesArray = await this.favourites.getAll();
-    
+    console.log(this.favouritesArray);
     for (var i = 0; i < this.favouritesArray.length; i++) {
       this.getFavourites(this.favouritesArray[i]);
     }
-
     console.log(this.imageSrcList);
     console.log(this.titlesList);
-
+    console.log(this.idList);
   }
 
   get(Id: string): Observable<any> {
@@ -51,16 +66,18 @@ export class FavouritesPage implements OnInit {
     this.get(Id).subscribe(
     {
       next: (results) => {
-        console.log(results);
+        //console.log(results);
         this.favouritesObjArray = results.results;
         this.favTitle = results.title;
         this.favImageSource = results.image;
+        this.favId = results.id;
       },
       error: (e) => console.error(e),
       complete: () => {
         console.info('complete');
         this.titlesList.push(this.favTitle);
         this.imageSrcList.push(this.favImageSource);
+        this.idList.push(this.favId);
         return this.favouritesObjArray;
       }
     }
