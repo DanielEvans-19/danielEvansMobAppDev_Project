@@ -33,22 +33,21 @@ export class FavouritesPage implements OnInit {
     addIcons({home,heart,cog,settings});
    }
 
-  async removeFavourite(Id: string) {
-    console.log(Id);
+  async removeFavourite(Id: string | number) {
   await this.favourites.remove(Id);
 
-  const index = this.idList.indexOf(Id);
+  const index = this.idList.findIndex(x => x.toString() === Id.toString());
+  
   if (index > -1) {
     this.idList.splice(index, 1);
     this.titlesList.splice(index, 1);
     this.imageSrcList.splice(index, 1);
   }
-  console.log('Updated arrays:', this.idList, this.titlesList, this.imageSrcList);
 }
 
   async ngOnInit() {
     this.favouritesArray = await this.favourites.getAll();
-    console.log(this.favouritesArray);
+    console.log(this.favourites.getAll());
     for (var i = 0; i < this.favouritesArray.length; i++) {
       this.getFavourites(this.favouritesArray[i]);
     }

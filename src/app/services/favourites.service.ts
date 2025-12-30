@@ -18,10 +18,13 @@ export class FavouritesService {
     await this.storage.set(this.storageKey, [...new Set([...list, id])]);
   }
 
-  async remove(id: string) {
-    const list = await this.getAll();
-    await this.storage.set(this.storageKey, list.filter(x => x !== id));
-  }
+  async remove(id: string | number) {
+  // Get the current list from storage
+  const list: (string | number)[] = (await this.getAll()) || [];
+  const filtered = list.filter(item => item.toString() !== id.toString());
+  // Save the updated list back to storage
+  await this.storage.set(this.storageKey, filtered);
+}
 
   async isFavourite(id: string) {
     const list = await this.getAll();
