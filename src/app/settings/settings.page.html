@@ -35,4 +35,16 @@
     </ion-row>
   </ion-grid>
 
+  <ion-title>Unit of Measurement currently selected: {{unitOfMeasure}}</ion-title>
+  <ion-title>Set unit of measurement below:</ion-title>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col size="auto"></ion-col>
+      <ion-col>
+        <ion-button (click)="setMetric()">Metric</ion-button>
+        <ion-button (click)="setUs()">US</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

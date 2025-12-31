@@ -47,7 +47,7 @@
       </ion-card-header>
 
       <ion-card-content>
-        <ion-button [href]="'/recipe-details?'">Details</ion-button>
+        <ion-button [href]="'/recipe-details?' + f.id">Details</ion-button>
         <ion-button (click)="removeFromFav(f.id)">
           Remove from Favourites &nbsp; 
             <ion-icon name="close"></ion-icon>

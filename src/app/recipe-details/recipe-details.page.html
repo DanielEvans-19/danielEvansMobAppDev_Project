@@ -47,6 +47,8 @@
 
       <ion-card-content>
         <strong>Ingredients:</strong>
+        <br>
+        <strong>Measurement Type: {{unitOfMeasurement}}</strong>
         
         <br><br>
         
@@ -60,8 +62,11 @@
                 </ion-col>
               </ion-row>
               <ion-row>
-                <ion-col>
+                <ion-col *ngIf="unitOfMeasurement == 'US'">
                   {{i.originalName}} : {{i.measures.us.amount}} {{i.measures.us.unitLong}}
+                </ion-col>
+                <ion-col *ngIf="unitOfMeasurement == 'Metric'">
+                  {{i.originalName}} : {{i.measures.metric.amount}} {{i.measures.metric.unitLong}}
                 </ion-col>
               </ion-row>
             </ion-grid>

@@ -25,7 +25,9 @@ export class RecipeDetailsPage implements OnInit {
   private url: string = "https://api.spoonacular.com/recipes/";
   private informationParam: string = "/information?";
 
+  //favourites and settings
   isFavourite: boolean = false;
+  unitOfMeasurement: string = "";
 
   //Recipe Information to be shown on page
   recipeImageSrc: string = "";
@@ -49,6 +51,10 @@ export class RecipeDetailsPage implements OnInit {
       this.isFavourite = true;
       console.log(this.isFavourite);
     }
+
+    console.log(this.storage.getMeasurementSettings("unitOfMeasure"));
+    this.unitOfMeasurement = this.storage.getMeasurementSettings("unitOfMeasure");
+
   }
 
   rdpAddToFave() {

@@ -15,10 +15,10 @@ export class StorageService {
 
   //ensure that the favourites array doesn't get overwritten each time the recipe-details page is opened
   initKey<T>(key: string, defaultValue: T): void {
-  const existing = localStorage.getItem(key);
-  if (existing === null) {
-    localStorage.setItem(key, JSON.stringify(defaultValue));
-  }
+    const existing = localStorage.getItem(key);
+    if (existing === null) {
+      localStorage.setItem(key, JSON.stringify(defaultValue));
+    }
   }
 
   set(key: string, value: any): void {
@@ -28,6 +28,14 @@ export class StorageService {
   get<T>(key: string): T | null {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) as T : null;
+  }
+
+  getMeasurementSettings(key: string): string {
+    if (JSON.parse(localStorage.getItem(key) as string) == null) {
+      return "Metric";
+    } else {
+    return JSON.parse(localStorage.getItem(key) as string);
+    }
   }
 
   remove(key: string): void {
