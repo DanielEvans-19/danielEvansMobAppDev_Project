@@ -43,14 +43,20 @@ export class RecipeDetailsPage implements OnInit {
     this.getRecipe(this.recipeId);
 
     console.log(this.recipeId);
-    if (this.storage.getFavourites().includes(this.recipeId) == true) {
-      this.isFavourite = true;
-    }
     console.log(this.storage.getFavourites());
+    
+    if (this.storage.getFavourites().some(f => f.id == this.recipeId) == true) {
+      this.isFavourite = true;
+      console.log(this.isFavourite);
+    }
   }
 
   rdpAddToFave() {
-    this.storage.addFavourite(this.recipeId);
+    this.storage.addFavourite({
+      id: this.recipeId,
+      title: this.recipeTitle,
+      image: this.recipeImageSrc
+  });
     this.ngOnInit();
   }
 
@@ -73,7 +79,7 @@ export class RecipeDetailsPage implements OnInit {
     this.get(Id).subscribe(
       {
         next: (results) => {
-          console.log(results);
+          //console.log(results);
           this.recipeObjectArr = results.results;
           this.recipeImageSrc = results.image;
           this.recipeTitle = results.title;
@@ -83,9 +89,6 @@ export class RecipeDetailsPage implements OnInit {
         error: (e) => console.error(e),
         complete: () => {
           console.info('complete');
-          console.log(this.recipeObjectArr);
-          console.log(this.recipeIngredients);
-          console.log(this.recipeSteps);
           return this.recipeObjectArr;
         }
       }

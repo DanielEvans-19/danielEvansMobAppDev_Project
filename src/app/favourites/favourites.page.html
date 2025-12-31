@@ -35,20 +35,20 @@
     </ion-row>
   </ion-grid>
 
-<ion-title *ngIf="recipeIdArr.length === 0">No favourites yet.</ion-title>
+<ion-title *ngIf="favouritesArray.length === 0">No favourites yet.</ion-title>
 
-<ion-item *ngFor="let r of recipeIdArr">
+<ion-item *ngFor="let f of favouritesArray">
     <ion-card id="recipeCard">
       <div id="recipeImagePadding">
-        <img id="recipeImage" src=""/>
+        <img id="recipeImage" src="{{f.image}}"/>
       </div>
       <ion-card-header>
-        <ion-card-title>{{r}}</ion-card-title>
+        <ion-card-title>{{f.title}}</ion-card-title>
       </ion-card-header>
 
       <ion-card-content>
         <ion-button [href]="'/recipe-details?'">Details</ion-button>
-        <ion-button>
+        <ion-button (click)="removeFromFav(f.id)">
           Remove from Favourites &nbsp; 
             <ion-icon name="close"></ion-icon>
         </ion-button>
