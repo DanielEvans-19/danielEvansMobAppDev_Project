@@ -10,34 +10,28 @@
 
  <!-- Floating Navigation Buttons -->
   <ion-grid>
-    <ion-row>
-      <ion-col offset="10">
-        <ion-fab>
-          <ion-fab-button href="/home">
-            <ion-icon name="home"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
-      </ion-col>
-      <ion-col>
-        <ion-fab>
-          <ion-fab-button href="/favourites">
-            <ion-icon name="heart"></ion-icon>          
-          </ion-fab-button>
-        </ion-fab>
-      </ion-col>
-      <ion-col>
-        <ion-fab>
-          <ion-fab-button href="/settings">
-            <ion-icon name="cog"></ion-icon>
-          </ion-fab-button>
-        </ion-fab>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-row>
+    <ion-col offset="10">
+      <ion-fab>
+        <ion-fab-button href="/home">
+          <ion-icon name="home"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button href="/favourites">
+          <ion-icon name="heart"></ion-icon>
+        </ion-fab-button>
+
+        <ion-fab-button href="/settings">
+          <ion-icon name="cog"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
   <!-- Card component for search -->
   <div>
-    <ion-card id="container_Left">
+    <ion-card >
       <ion-card-header>
         <ion-card-title>Enter Ingredients</ion-card-title>
         <ion-card-subtitle>Multiple values entered below should be separated by a comma</ion-card-subtitle>
@@ -59,7 +53,7 @@
   <!--Add in Recipe Cards here -->
   <ion-list id="recipeList">
     <ion-item *ngFor="let r of recipesListArr">
-      <ion-card id="recipeCard">
+      <ion-card>
         <div id="recipeImagePadding">
           <img id="recipeImage" src={{r.image}} />
         </div>
