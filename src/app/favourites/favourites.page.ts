@@ -1,7 +1,7 @@
 import { Component, OnInit, Testability } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonFab, IonFabButton, IonIcon, IonRow, IonButton, IonCardTitle, IonItem, IonCardContent, IonCardHeader, IonCard } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonFab, IonFabButton, IonIcon, IonRow, IonButton, IonCardTitle, IonItem, IonCardContent, IonCardHeader, IonCard, IonFabList } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart, settings, cog, home, close } from 'ionicons/icons';
 import { StorageService } from '../services/storage.service';

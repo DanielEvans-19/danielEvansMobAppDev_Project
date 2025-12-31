@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonFab, IonFabButton, IonIcon, IonList, IonItem, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonFab, IonFabButton, IonIcon, IonList, IonItem, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton, IonFabList } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
 import { heart, settings, cog, home, close } from 'ionicons/icons';
 import { HttpClient } from '@angular/common/http';
@@ -14,7 +14,7 @@ import { StorageService } from '../services/storage.service';
   templateUrl: './recipe-details.page.html',
   styleUrls: ['./recipe-details.page.scss'],
   standalone: true,
-  imports: [IonCardContent, IonButton, IonCardTitle, IonCardHeader, IonCard, IonItem, IonList, IonIcon, IonFabButton, IonFab, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonFabList, IonCardContent, IonButton, IonCardTitle, IonCardHeader, IonCard, IonItem, IonList, IonIcon, IonFabButton, IonFab, IonCol, IonRow, IonGrid, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class RecipeDetailsPage implements OnInit {
 
@@ -55,6 +55,16 @@ export class RecipeDetailsPage implements OnInit {
     console.log(this.storage.getMeasurementSettings("unitOfMeasure"));
     this.unitOfMeasurement = this.storage.getMeasurementSettings("unitOfMeasure");
 
+  }
+
+  setToMetric() {
+    this.storage.set("unitOfMeasure", "Metric");
+    this.ngOnInit();
+  }
+
+  setToUs() {
+    this.storage.set("unitOfMeasure", "US");
+    this.ngOnInit();
   }
 
   rdpAddToFave() {

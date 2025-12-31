@@ -27,9 +27,20 @@
       </ion-col>
       <ion-col>
         <ion-fab>
-          <ion-fab-button href="/settings">
+          <ion-fab-button>
             <ion-icon name="cog"></ion-icon>
           </ion-fab-button>
+          <ion-fab-list side="bottom">
+            <ion-fab-button href="/settings">
+              <ion-icon name="cog"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button (click)="setToMetric()">
+              <strong>IRL</strong>
+            </ion-fab-button>
+            <ion-fab-button (click)="setToUs()">
+              <strong>US</strong> 
+            </ion-fab-button>           
+          </ion-fab-list>
         </ion-fab>
       </ion-col>
     </ion-row>
@@ -63,10 +74,18 @@
               </ion-row>
               <ion-row>
                 <ion-col *ngIf="unitOfMeasurement == 'US'">
-                  {{i.originalName}} : {{i.measures.us.amount}} {{i.measures.us.unitLong}}
+                  {{i.originalName}} : 
                 </ion-col>
                 <ion-col *ngIf="unitOfMeasurement == 'Metric'">
-                  {{i.originalName}} : {{i.measures.metric.amount}} {{i.measures.metric.unitLong}}
+                  {{i.originalName}} : 
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col *ngIf="unitOfMeasurement == 'US'">
+                  {{i.measures.us.amount}} {{i.measures.us.unitLong}}
+                </ion-col>
+                <ion-col *ngIf="unitOfMeasurement == 'Metric'">
+                  {{i.measures.metric.amount}} {{i.measures.metric.unitLong}}
                 </ion-col>
               </ion-row>
             </ion-grid>
