@@ -50,6 +50,8 @@ export class RecipeDetailsPage implements OnInit {
     if (this.storage.getFavourites().some(f => f.id == this.recipeId) == true) {
       this.isFavourite = true;
       console.log(this.isFavourite);
+    } else {
+      this.isFavourite = false;
     }
 
     console.log(this.storage.getMeasurementSettings("unitOfMeasure"));
