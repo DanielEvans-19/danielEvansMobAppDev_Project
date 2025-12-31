@@ -18,7 +18,6 @@
           </ion-fab-button>
         </ion-fab>
       </ion-col>
-
       <ion-col>
         <ion-fab>
           <ion-fab-button href="/favourites">
@@ -26,28 +25,17 @@
           </ion-fab-button>
         </ion-fab>
       </ion-col>
-
       <ion-col>
         <ion-fab>
-          <ion-fab-button>
+          <ion-fab-button href="/settings">
             <ion-icon name="cog"></ion-icon>
           </ion-fab-button>
-          <ion-fab-list side="bottom">
-            <ion-fab-button href="/settings">
-              <ion-icon name="settings"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-button>
-              <strong>IRL</strong>
-            </ion-fab-button>
-            <ion-fab-button>
-              <strong>US</strong> 
-            </ion-fab-button>           
-          </ion-fab-list>
         </ion-fab>
       </ion-col>
     </ion-row>
   </ion-grid>
 
+<ion-title *ngIf="titlesList.length == 0">No favourites yet.</ion-title>
 
 <ion-item *ngFor="let t of titlesList; let idx = index">
     <ion-card id="recipeCard">
@@ -60,7 +48,7 @@
 
       <ion-card-content>
         <ion-button [href]="'/recipe-details?' + idList[idx]">Details</ion-button>
-        <ion-button (click) ="removeFavourite(idList[idx])">
+        <ion-button>
           Remove from Favourites | 
             <ion-icon name="heart"></ion-icon>
         </ion-button>

@@ -10,7 +10,7 @@ import { heart, settings, cog, home } from 'ionicons/icons';
   templateUrl: './settings.page.html',
   styleUrls: ['./settings.page.scss'],
   standalone: true,
-  imports: [IonGrid, IonRow, IonFabList, IonIcon, IonFabButton, IonFab, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
+  imports: [IonGrid, IonRow, IonIcon, IonFabButton, IonFab, IonCol, IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule]
 })
 export class SettingsPage implements OnInit {
 

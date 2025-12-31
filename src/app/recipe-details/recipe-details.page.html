@@ -18,31 +18,18 @@
           </ion-fab-button>
         </ion-fab>
       </ion-col>
-
       <ion-col>
         <ion-fab>
           <ion-fab-button href="/favourites">
-            <ion-icon name="heart"></ion-icon>
+            <ion-icon name="heart"></ion-icon>          
           </ion-fab-button>
         </ion-fab>
       </ion-col>
-
       <ion-col>
         <ion-fab>
-          <ion-fab-button>
+          <ion-fab-button href="/settings">
             <ion-icon name="cog"></ion-icon>
           </ion-fab-button>
-          <ion-fab-list side="bottom">
-            <ion-fab-button href="/settings">
-              <ion-icon name="settings"></ion-icon>
-            </ion-fab-button>
-            <ion-fab-button>
-              <strong>IRL</strong>
-            </ion-fab-button>
-            <ion-fab-button>
-              <strong>US</strong>
-            </ion-fab-button>
-          </ion-fab-list>
         </ion-fab>
       </ion-col>
     </ion-row>
@@ -101,8 +88,11 @@
             </ion-grid>
           </ion-item>
         </ion-list>
-            <ion-button (click)="addToFavourites()">
+            <ion-button *ngIf="!isFavourite">
               Add to favourites
+            </ion-button>
+            <ion-button *ngIf="isFavourite">
+              Remove from favourites
             </ion-button>
           <ion-col offset="5"></ion-col>
       </ion-card-content>
