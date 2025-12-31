@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonCol, IonFab, IonFabButton, IonIcon, IonRow, IonButton, IonCardTitle, IonItem, IonCardContent, IonCardHeader, IonCard } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { heart, settings, cog, home } from 'ionicons/icons';
-import { FavouritesService } from '../services/favourites.service';
+import { heart, settings, cog, home, close } from 'ionicons/icons';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-favourites',
@@ -17,32 +17,15 @@ import { Observable } from 'rxjs';
 })
 export class FavouritesPage implements OnInit {
 
-  favouritesArray: string[] = [];
-  favouritesObjArray: any[] = [];
-
-  favTitle: string = "";
-  titlesList: string[] = [];
-
-  imageSrcList: string[] = [];
-  favImageSource: string = "";
-
-  favId: string = "";
-  idList: string[] = [];
-
-  constructor(private favourites: FavouritesService, private http: HttpClient) { 
-    addIcons({home,heart,cog,settings});
+  constructor(private http: HttpClient, private storage: StorageService) { 
+    addIcons({home,heart,cog,close,settings});
    }
 
+   recipeIdArr: string[] = [];
 
   async ngOnInit() {
-    //this.favouritesArray = await this.favourites.getAll();
-    // console.log(this.favourites.getAll());
-    for (var i = 0; i < this.favouritesArray.length; i++) {
-      this.getFavourites(this.favouritesArray[i]);
-    }
-    console.log(this.imageSrcList);
-    console.log(this.titlesList);
-    console.log(this.idList);
+    this.recipeIdArr = this.storage.getFavourites();
+    console.log(this.recipeIdArr);
   }
 
   get(Id: string): Observable<any> {
@@ -55,21 +38,16 @@ export class FavouritesPage implements OnInit {
     {
       next: (results) => {
         //console.log(results);
-        this.favouritesObjArray = results.results;
-        this.favTitle = results.title;
-        this.favImageSource = results.image;
-        this.favId = results.id;
+        //this.favouritesObjArray = results.results;
+        //this.favTitle = results.title;
       },
       error: (e) => console.error(e),
       complete: () => {
         console.info('complete');
-        this.titlesList.push(this.favTitle);
-        this.imageSrcList.push(this.favImageSource);
-        this.idList.push(this.favId);
-        return this.favouritesObjArray;
+        return null;
       }
     }
   )
-  return this.favouritesObjArray;
+  return null;
 }
 }

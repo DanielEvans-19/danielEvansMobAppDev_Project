@@ -88,11 +88,13 @@
             </ion-grid>
           </ion-item>
         </ion-list>
-            <ion-button *ngIf="!isFavourite">
-              Add to favourites
+            <ion-button *ngIf="!isFavourite" (click)="rdpAddToFave()">
+              <ion-icon name="heart"></ion-icon>
+              &nbsp;Add to favourites 
             </ion-button>
-            <ion-button *ngIf="isFavourite">
-              Remove from favourites
+            <ion-button *ngIf="isFavourite" (click)="rdpRemoveFromFave()">
+              <ion-icon name="close"></ion-icon>
+              &nbsp;Remove from favourites
             </ion-button>
           <ion-col offset="5"></ion-col>
       </ion-card-content>

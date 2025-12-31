@@ -6,6 +6,7 @@ import { heart, settings, cog, home } from 'ionicons/icons';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-home',
@@ -37,7 +38,7 @@ export class HomePage {
 
   recipeTitle: string = ""
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private storage: StorageService) {
     addIcons({ heart, cog, home, settings })
   }
 

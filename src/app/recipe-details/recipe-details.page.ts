@@ -3,11 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonContent, IonHeader, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonFab, IonFabButton, IonIcon, IonList, IonItem, IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { heart, settings, cog, home } from 'ionicons/icons';
+import { heart, settings, cog, home, close } from 'ionicons/icons';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { FavouritesService } from '../services/favourites.service';
+import { StorageService } from '../services/storage.service';
 
 @Component({
   selector: 'app-recipe-details',
@@ -33,38 +33,41 @@ export class RecipeDetailsPage implements OnInit {
   recipeIngredients: any[] = [];
   recipeSteps: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router, private favourites: FavouritesService) {
-    addIcons({ home, heart, cog, settings });
+  constructor(private http: HttpClient, private router: Router, private storage: StorageService) {
+    addIcons({home,heart,cog,close,settings});
+    this.storage.initKey("favourites", []);
   }
 
-  /*
-  addToFavourites() {
-    this.favourites.add(this.recipeId);
+  async ngOnInit() {
+    this.setId();
+    this.getRecipe(this.recipeId);
+
     console.log(this.recipeId);
+    if (this.storage.getFavourites().includes(this.recipeId) == true) {
+      this.isFavourite = true;
+    }
+    console.log(this.storage.getFavourites());
   }
 
-  async removeFromFavourites() {
-    await this.favourites.remove(this.recipeId);
+  rdpAddToFave() {
+    this.storage.addFavourite(this.recipeId);
+    this.ngOnInit();
   }
-    */
 
+  rdpRemoveFromFave() {
+    this.storage.removeFavourite(this.recipeId);
+    this.ngOnInit();
+  }
+
+  //getting json methods
   setId() {
     var url = this.router.url;
     this.recipeId = url.slice(url.indexOf("?") + 1, url.length - 1);
   }
 
-  async ngOnInit() {
-    this.setId();
-    console.log(this.recipeId);
-    this.getRecipe(this.recipeId);
-    //this.isFavourite = await this.favourites.isFavourite(this.recipeId);
-    console.log(this.isFavourite);
-  }
-
   get(Id: string): Observable<any> {
     return this.http.get(this.url + Id + this.informationParam + this.apiKey);
   }
-
 
   getRecipe(Id: string) {
     this.get(Id).subscribe(
